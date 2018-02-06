@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="TODO">
+<head>
+    <title>Task Manager</title>
+    <script src="angular.js"></script>
+    <script src="./controller/main.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Task Manager</h1>
+    </header>
+    <section>
+        <div ng-controller="todoController as td">
+            <div>
+                <h2>
+                    To Do
+                </h2>
+            </div>
+            <div>
+                Task : 
+                <input type="text" ng-model="td.todoTask">
+                <button type="submit" ng-click="td.addTodoTask()">add</button>
+                <table>
+                    <tr data-ng-repeat="task in td.todoTasks">
+                        <td><span ng-bind="task.todo"></span></td>
+                        <td><button ng-click="td.process($index)" type="submit">process</button></td>
+                        <td><button ng-click="td.delete($index)" type="submit">delete</button></td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+        <div ng-controller="doingController as d">
+            <div>
+                <h2>
+                    Doing
+                </h2>
+            </div>
+            <div>
+                <table>
+                    <tr data-ng-repeat="task in d.doingTasks">
+                        <td><span ng-bind="task.doing"></span></td>
+                        <td><button type="submit" ng-click="d.done($index)">done</button></td>
+                        <td><button type="submit" ng-click="d.delete($index)">delete</button></td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+        <div ng-controller="doneController as dc">
+                <div>
+                    <h2>
+                        Done
+                    </h2>
+                </div>
+                <div>
+                    <table>
+                        <tr data-ng-repeat="task in dc.doneTasks">
+                            <td><span ng-bind="task.done"></span></td>
+                            <td><button type="submit" ng-click="dc.delete($index)">delete</button></td>
+                        </tr>
+                    </table>
+    
+                </div>
+            </div>
+    </section>
+    <footer>
+        <p>Visit <a href="http://www.protractortest.org/#/api">Protractor Api</a> for more info.</p>
+        <p>copyright 2018</p>
+    </footer>
+
+</body>
+</html>
